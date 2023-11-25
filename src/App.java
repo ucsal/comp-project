@@ -28,7 +28,13 @@ public class App extends JFrame {
 
     private void enviarCodigo() {
         String codigoInserido = areaDeCodigo.getText();
-        JOptionPane.showMessageDialog(this, codigoInserido);
+
+        // Usando JOptionPane com um JTextArea para permitir seleção e cópia
+        JTextArea areaDeTextoDialog = new JTextArea(codigoInserido);
+        areaDeTextoDialog.setEditable(false); // Impede a edição do texto
+
+        JOptionPane.showMessageDialog(this, new JScrollPane(areaDeTextoDialog), "Código Inserido",
+                JOptionPane.INFORMATION_MESSAGE);
     }
 
     public static void main(String[] args) {
