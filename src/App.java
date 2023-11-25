@@ -7,31 +7,35 @@ public class App extends JFrame {
     private JButton botaoEnviar;
 
     public App() {
-        // Configurações da janela
         setTitle("Inserção de Código");
         setSize(500, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // Criação dos componentes
-        areaDeCodigo = new JTextArea(10, 40); // 10 linhas, 40 colunas
+        areaDeCodigo = new JTextArea(80, 80);
         botaoEnviar = new JButton("Enviar");
         botaoEnviar.addActionListener(e -> enviarCodigo());
 
-        // Configuração do layout
         setLayout(new BorderLayout());
 
-        // Adição dos componentes à janela
         add(new JScrollPane(areaDeCodigo), BorderLayout.CENTER);
         add(botaoEnviar, BorderLayout.SOUTH);
     }
 
     private void enviarCodigo() {
-        String codigoInserido = areaDeCodigo.getText();
+        /*
+         * 
+         * 
+         * Metodos de compilação e tradução
+         * 
+         * 
+         */
+        mostrarMensagem(areaDeCodigo.getText());
+    }
 
-        // Usando JOptionPane com um JTextArea para permitir seleção e cópia
-        JTextArea areaDeTextoDialog = new JTextArea(codigoInserido);
-        areaDeTextoDialog.setEditable(false); // Impede a edição do texto
+    private void mostrarMensagem(String mensagem) {
+        JTextArea areaDeTextoDialog = new JTextArea(mensagem);
+        areaDeTextoDialog.setEditable(false);
 
         JOptionPane.showMessageDialog(this, new JScrollPane(areaDeTextoDialog), "Código Inserido",
                 JOptionPane.INFORMATION_MESSAGE);
